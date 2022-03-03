@@ -9,7 +9,7 @@ import ivy
 
 
 # noinspection PyShadowingBuiltins
-def iinfo(type: Union[type, str, mx.ndarray.ndarray.NDArray])\
+def iinfo(type: Union[type, str, mx.ndarray.ndarray.NDArray]) \
         -> np.iinfo:
     return np.iinfo(ivy.dtype_from_str(type))
 
@@ -41,6 +41,17 @@ class Finfo:
 
 
 # noinspection PyShadowingBuiltins
-def finfo(type: Union[type, str, mx.ndarray.ndarray.NDArray])\
+def finfo(type: Union[type, str, mx.ndarray.ndarray.NDArray]) \
         -> Finfo:
     return Finfo(np.finfo(ivy.dtype_from_str(type)))
+
+
+def broadcast_to(x: mx.ndarray.ndarray.NDArray, new_shape) -> mx.ndarray.ndarray.NDArray:
+    x_shape = list(x.shape)
+    num_x_dims = len(x_shape)
+    num_shape_dims = len(new_shape)
+    diff = num_shape_dims - num_x_dims
+    if diff == 0:
+        return mx.nd.broadcast_to(x, new_shape)
+    x = mx.nd.reshape(x, [1] * diff + x_shape)
+    return mx.nd.broadcast_to(x, new_shape)

@@ -1,5 +1,5 @@
 # global
-from typing import Union
+from typing import Union, Iterable
 
 # local
 import ivy
@@ -13,7 +13,7 @@ Iinfo = None
 # -----------#
 
 # noinspection PyShadowingBuiltins
-def iinfo(type: Union[ivy.Dtype, str, ivy.Array, ivy.NativeArray])\
+def iinfo(type: Union[ivy.Dtype, str, ivy.Array, ivy.NativeArray]) \
         -> Iinfo:
     """
     Machine limits for integer data types.
@@ -32,7 +32,7 @@ def iinfo(type: Union[ivy.Dtype, str, ivy.Array, ivy.NativeArray])\
 
 
 # noinspection PyShadowingBuiltins
-def finfo(type: Union[ivy.Dtype, str, ivy.Array, ivy.NativeArray])\
+def finfo(type: Union[ivy.Dtype, str, ivy.Array, ivy.NativeArray]) \
         -> Finfo:
     """
     Machine limits for floating-point data types.
@@ -52,3 +52,18 @@ def finfo(type: Union[ivy.Dtype, str, ivy.Array, ivy.NativeArray])\
           smallest positive floating-point number with full precision.
     """
     return _cur_framework(None).finfo(type)
+
+
+# noinspection PyShadowingBuiltins
+def broadcast_to(x: ivy.Array, newshape: Iterable[int]) \
+        -> ivy.Array:
+    """
+    Broadcast the input tensor to newshape, adding dimensions of size 1 where the dimensions do not align.
+
+    :param x: array to broadcast.
+    :type x: array
+    :param newshape: The new shape the tensor should be broadcast to.
+    :type newshape: sequence of ints
+    :return: Newly broadcast array.
+    """
+    return _cur_framework(x).broadcast_to(x, newshape)

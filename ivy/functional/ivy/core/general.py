@@ -845,20 +845,6 @@ def reshape(x: Union[ivy.Array, ivy.NativeArray], newshape: Union[int, Iterable[
     return _cur_framework(x).reshape(x, newshape)
 
 
-def broadcast_to(x: Union[ivy.Array, ivy.NativeArray], newshape: Iterable[int])\
-        -> Union[ivy.Array, ivy.NativeArray]:
-    """
-    Broadcast the input tensor to newshape, adding dimensions of size 1 where the dimensions do not align.
-
-    :param x: Tensor to be broadcast to new shape.
-    :type x: array
-    :param newshape: The new shape the tensor should be broadcast to.
-    :type newshape: sequence of ints
-    :return: Newly broadcast array.
-    """
-    return _cur_framework(x).broadcast_to(x, newshape)
-
-
 def squeeze(x: Union[ivy.Array, ivy.NativeArray], axis: int = None)\
         -> Union[ivy.Array, ivy.NativeArray]:
     """

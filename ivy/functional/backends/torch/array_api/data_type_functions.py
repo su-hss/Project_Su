@@ -7,7 +7,7 @@ import ivy
 
 
 # noinspection PyShadowingBuiltins
-def iinfo(type: Union[torch.dtype, str, torch.Tensor])\
+def iinfo(type: Union[torch.dtype, str, torch.Tensor]) \
         -> torch.iinfo:
     return torch.iinfo(ivy.dtype_from_str(type))
 
@@ -39,6 +39,10 @@ class Finfo:
 
 
 # noinspection PyShadowingBuiltins
-def finfo(type: Union[torch.dtype, str, torch.Tensor])\
+def finfo(type: Union[torch.dtype, str, torch.Tensor]) \
         -> Finfo:
     return Finfo(torch.finfo(ivy.dtype_from_str(type)))
+
+
+def broadcast_to(x: torch.Tensor, new_shape) -> torch.Tensor:
+    return x.expand(new_shape)

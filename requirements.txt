@@ -1,5 +1,12 @@
-numpy
-einops
-psutil
-termcolor
+numpy~=1.22.2
+einops~=0.4.0
+psutil~=5.9.0
+termcolor~=1.1.0
 nvidia-ml-py3 # mod_name=pynvml
+importlib~=1.0.4
+jax~=0.2.10
+scipy~=1.8.0
+matplotlib~=3.5.1
+setuptools~=58.1.0
+hypothesis~=6.39.0
+pytest~=7.0.1

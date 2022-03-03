@@ -10,7 +10,7 @@ import ivy
 
 
 # noinspection PyShadowingBuiltins
-def iinfo(type: Union[DType, str, Tensor])\
+def iinfo(type: Union[DType, str, Tensor]) \
         -> np.iinfo:
     return tf.experimental.numpy.iinfo(ivy.dtype_to_str(type))
 
@@ -42,6 +42,10 @@ class Finfo:
 
 
 # noinspection PyShadowingBuiltins
-def finfo(type: Union[DType, str, Tensor])\
+def finfo(type: Union[DType, str, Tensor]) \
         -> Finfo:
     return Finfo(tf.experimental.numpy.finfo(ivy.dtype_from_str(type)))
+
+
+def broadcast_to(x: Tensor, new_shape) -> Tensor:
+    return tf.broadcast_to(x, new_shape)
